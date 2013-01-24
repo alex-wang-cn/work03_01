@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="5" >
+
+        <ListView
+            android:id="@+id/inqiry_list_left"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#C0C0C0"
+            android:padding="5dp" >
+        </ListView>
+
+        <com.tools.MyProgressBar
+            android:id="@+id/list_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:visibility="gone" />
+
+
+        <Button
+            android:id="@+id/tenders_lost_net"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="连接错误，点击刷新"
+            android:visibility="gone" >
+        </Button>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2" >
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/white" >
+
+            <TableLayout
+                android:id="@+id/inquiey_right"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="#1E90FF" >
+
+                <TableRow
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="标段名称 ："
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tenders_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="3"
+                        android:textSize="15dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/gainsboro" >
+
+                    <TextView
+                        android:id="@+id/inqiry_right_text_02"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="标段区域  ："
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tenders_area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_span="3"
+                        android:textSize="15dp" >
+                    </TextView>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:id="@+id/inqiry_right_text_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="项目经理："
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tenders_manager_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="电话号码:"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tenders_manager_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text=""
+                        android:textSize="15dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/gainsboro" >
+
+                    <TextView
+                        android:id="@+id/inqiry_right_text_03"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="项目联系人："
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tenders_project_pserson_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="电话号码:"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tenders_project_pseron_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textSize="15dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="建设单位："
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/tenders_project_build_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_span="3"
+                        android:textSize="15dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/gainsboro" >
+
+                    <TextView
+                        android:id="@+id/inqiry_right_text_05"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="实名共监管状态："
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tender_realy_name_manage_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="3"
+                        android:textSize="15dp" >
+                    </TextView>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="工资监管状态:"
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tenders_salary_manage_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="3"
+                        android:textSize="15dp" >
+                    </TextView>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="刷卡机状态："
+                        android:textSize="15dp" />
+
+                    <Spinner
+                        android:id="@+id/tender_ccm_sate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/ccm_state"
+                        android:spinnerMode="dropdown" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/gainsboro" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="视频状态:"
+                        android:textSize="15dp" />
+
+                    <Spinner
+                        android:id="@+id/tenders_screen_view_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:entries="@array/screen_view_state" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/gainsboro" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="标段联系人："
+                        android:textSize="15dp" >
+                    </TextView>
+
+                    <EditText
+                        android:id="@+id/tenders_person_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="请输入"
+                        android:textSize="15dp" >
+                    </EditText>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="电话号码:"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/tenders_person_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="请输入电话号码"
+                        android:textSize="15dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="备注："
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/tenders_comment"
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_span="3"
+                        android:text="请输入备注"
+                        android:textSize="15dp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/gainsboro" >
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onTakeCCMPhoto"
+                        android:text="工程拍照"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/tenders_show_ccm_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:onClick="showBigImage" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onTakeProjectPhoto"
+                        android:text="刷卡机拍照"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/tenders_show_project_photo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:onClick="showBigImage" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/white" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_span="3" />
+
+                    <Button
+                        android:id="@+id/inquiry_right_submit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:onClick="upLoadData"
+                        android:text="上传"
+                        android:textSize="16sp" />
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+
+        <com.tools.MyProgressBar
+            android:id="@+id/tenders_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

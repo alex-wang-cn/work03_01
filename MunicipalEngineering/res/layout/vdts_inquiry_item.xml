@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <TextView
+        android:id="@+id/vdts_item_install"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="安装位置："
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/vdts_item_install_place_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/vdts_item_install"
+        android:text="safffffff"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/vdts_item_install_identifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/vdts_item_install_place_text"
+        android:text="编号："
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/vdts_item_install_num_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/vdts_item_install_identifier"
+        android:text="00000000000000"
+        android:textSize="18dp" />
+
+</RelativeLayout>

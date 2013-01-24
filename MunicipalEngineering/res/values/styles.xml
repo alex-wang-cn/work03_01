@@ -1,0 +1,77 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Light" />
+
+    <style name="checkBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#CCCCCC</item>
+        <item name="android:button">@drawable/cb_check</item>
+    </style>
+
+    <style name="tab_item_text_style">
+        <item name="android:textSize">12.0dip</item>
+        <item name="android:textColor">@color/tab_text</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="tab_btn">
+        <item name="android:textAppearance">@style/tab_item_text_style</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@drawable/trans</item>
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+
+    <!-- for the head bar title -->
+    <style name="title" parent="ww">
+        <item name="android:textColor">@color/title</item>
+        <item name="android:textSize">@dimen/title</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <!-- for the radio button tabs -->
+    <style name="rb_tab" parent="ff">
+        <item name="android:background">@null</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <!-- contact -->
+    <style name="contact_ibt" parent="ww">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- voip -->
+    <style name="voip_ibt" parent="ww">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="contact_item_name" parent="ww">
+        <item name="android:textSize">@dimen/font_size_Middle</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+
+    <style name="contact_item_group_author" parent="ww">
+        <item name="android:textSize">@dimen/item_time</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+    <style name="contact_item_recently_from" parent="contact_item_group_author">
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="contact_item_recently_time" parent="ww">
+        <item name="android:textSize">@dimen/font_size_Small</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_weight">6</item>
+    </style>
+
+
+</resources>

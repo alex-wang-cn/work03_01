@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<resources xmlns:android="http://schemas.android.com/apk/res/android"> 
+    
+    <!-- 字体大小 -->
+    <dimen name="font_size_Large">26sp</dimen> 
+    <dimen name="font_size_Middle">20sp</dimen> 
+    <dimen name="font_size_Small">16sp</dimen>
+    <dimen name="title">22sp</dimen>
+    <dimen name="item_time">18sp</dimen>
+    <dimen name="font_size_hind">30sp</dimen>
+    <!-- 布局间距-->
+    <dimen name="padding">10dp</dimen>
+</resources> 
