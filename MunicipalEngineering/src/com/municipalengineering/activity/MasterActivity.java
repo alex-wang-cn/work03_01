@@ -1,20 +1,8 @@
 package com.municipalengineering.activity;
 
 import java.io.File;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
-import com.municipalengineering.adapter.HandleAdapter;
-import com.municipalengineering.fragment.MainGridFragment;
-import com.municipalengineering.fragment.MainGridFragment.MainGridItemClickLisner;
-import com.municipalengineering.view.HomeView;
-import com.municipalengineering.view.TendersInspectionView;
-import com.municipalengineering.view.ViewDirector;
-import com.tools.InitIconBeans;
-import com.wang.wdiget.Panel;
-import com.wang.wdiget.Panel.OnPanelListener;
-
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,21 +13,23 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.municipalengineering.adapter.HandleAdapter;
+import com.municipalengineering.fragment.MainGridFragment;
+import com.municipalengineering.fragment.MainGridFragment.MainGridItemClickLisner;
+import com.tools.InitIconBeans;
 
 public class MasterActivity extends FragmentActivity implements
 		MainGridItemClickLisner {
 
-	private Panel mPanel;
 	private GridView mPanelContent;
-	private RelativeLayout mParenLayout;
 	private HandleAdapter mHandlerAdapter;
 	private ImageView mProjectPhoto;
 	private ImageView mCMMPhoto;
@@ -51,15 +41,12 @@ public class MasterActivity extends FragmentActivity implements
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_main);
 
-		mPanel = (Panel) findViewById(R.id.topPanel);
 		mPanelContent = (GridView) findViewById(R.id.panelContent);
-		mParenLayout = (RelativeLayout) findViewById(R.id.main_content);
 		mHandlerAdapter = new HandleAdapter(this, mPanelContent.getId(),
 				InitIconBeans.getInstance().getHanderIcons());
 		mPanelContent.setAdapter(mHandlerAdapter);
 
 		mPanelContent.setOnItemClickListener(new OnItemClickListener() {
-
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -81,14 +68,10 @@ public class MasterActivity extends FragmentActivity implements
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.main_content, fragment).commit();
-		getSupportFragmentManager().beginTransaction().addToBackStack(null);
-	}
-
-	public static class ViewTag {
-		View converview;
-		Button converButton;
+		FragmentTransaction translation =getSupportFragmentManager().beginTransaction();
+		
+		translation.replace(R.id.main_content, fragment).commit();
+		translation.addToBackStack(null);
 	}
 
 	private String mFilePath;
@@ -102,9 +85,6 @@ public class MasterActivity extends FragmentActivity implements
 		}
 	}
 
-	@Override
-	public void onBackPressed() {
-	}
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
