@@ -2,12 +2,16 @@ package com.municipalengineering.entity;
 
 import java.io.Serializable;
 
-public class UserBean implements Serializable {
+import org.simpleframework.xml.Element;
 
+public class UserBean implements Serializable {
+	private static final long serialVersionUID = 774925424958942163L;
 	private String passward;
 	private String userName;
 	private boolean isRemberPassWorld;
 	private String userId;
+	
+	private String getContent;
 
 	public String getPassward() {
 		return passward;

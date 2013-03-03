@@ -30,5 +30,9 @@
     <string name="user_name">sbs</string>
     <string name="pass_word ">sbs</string>
     <string name="server_port">9901</string>
+    
+   <string name="user_input_erro">用户名密码不能为空</string>
+   <string name="net_connect_lost">无网络连接</string>
+   <string name="net_connect_erro">网络连接错误</string>
 
 </resources>

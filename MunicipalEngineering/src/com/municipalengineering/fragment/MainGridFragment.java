@@ -68,7 +68,6 @@ public class MainGridFragment extends Fragment {
 	private ArrayList<IconBean> mResIds = InitIconBeans.getInstance()
 			.getHomeIcons();
 
-	SoapService mSoapService;
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {

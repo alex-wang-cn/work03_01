@@ -6,12 +6,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import org.apache.commons.codec.binary.Base64;
+import android.util.Base64;
 
 public class ObjectTool {
 
 	/*
-	 *  this object must is a object of Serializable
+	 * this object must is a object of Serializable
 	 */
 	public static String ObjectToString(Object object) {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -19,7 +19,7 @@ public class ObjectTool {
 		try {
 			obj = new ObjectOutputStream(baos);
 			obj.writeObject(object);
-			return new String(Base64.encodeBase64(baos.toByteArray()));
+			return new String(Base64.encode(baos.toByteArray(), Base64.DEFAULT));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -27,7 +27,7 @@ public class ObjectTool {
 	}
 
 	public static Object StringToObject(String string) {
-		byte[] bsByte = Base64.decodeBase64(string.getBytes());
+		byte[] bsByte = Base64.decode(string.getBytes(), Base64.DEFAULT);
 		ByteArrayInputStream bais = new ByteArrayInputStream(bsByte);
 		ObjectInputStream ois = null;
 		try {

@@ -37,7 +37,6 @@ import com.municipalengineering.view.HomeView;
 import com.municipalengineering.view.TendersInspectionView;
 import com.municipalengineering.view.ViewDirector;
 import com.tools.InitIconBeans;
-import com.tools.SoapService;
 import com.wang.wdiget.Panel;
 import com.wang.wdiget.Panel.OnPanelListener;
 

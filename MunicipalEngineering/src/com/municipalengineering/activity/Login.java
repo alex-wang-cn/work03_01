@@ -1,16 +1,9 @@
 package com.municipalengineering.activity;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,9 +13,11 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.municipalengineering.entity.UserBean;
+import com.tools.NetUitl;
 import com.tools.ObjectTool;
-import com.tools.SoapService;
 import com.tools.StringTool;
 import com.tools.XmlPaser;
 
@@ -31,11 +26,11 @@ public class Login extends Activity {
 	private TextView mpassWorldTextView;
 	private TextView mUserNameTextView;
 	private CheckBox isRemberPass;
-	private SoapService mSoapService;
 	private final static String Tag = "Login";
 	private final static String user_key = "user";
 	private final int VALIDATE_USER_CODE = 1;
 	private boolean isLoging = false;
+	private AsyncHttpClient client = new AsyncHttpClient();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +54,6 @@ public class Login extends Activity {
 		} else {
 			mUserBean = new UserBean();
 		}
-		mSoapService = new SoapService(mHandler);
 
 		btnLogin.setOnClickListener(new OnClickListener() {
 			@Override
@@ -71,10 +65,30 @@ public class Login extends Activity {
 				mUserBean.setUserName(mUserNameTextView.getText().toString());
 				if (mUserBean.getPassward().equals("")
 						|| mUserBean.getUserName().equals("")) {
-					Toast.makeText(Login.this, "用户名密码不能为空", 3 * 1000).show();
+					Toast.makeText(Login.this,
+							getString(R.string.user_input_erro),
+							Toast.LENGTH_LONG).show();
 					return;
 				}
-				mSoapService.validateUser(mUserBean, VALIDATE_USER_CODE);
+				if (NetUitl.isConnect(getBaseContext())) {
+					client.get("", new AsyncHttpResponseHandler() {
+						@Override
+						public void onSuccess(int statusCode, String content) {
+							validateUser(content);
+						}
+
+						@Override
+						public void onFailure(Throwable error) {
+							netEorror();
+						};
+					});
+
+				} else {
+					Toast.makeText(Login.this,
+							getString(R.string.net_connect_lost),
+							Toast.LENGTH_LONG).show();
+					return;
+				}
 				disableLogin();
 			}
 
@@ -85,32 +99,15 @@ public class Login extends Activity {
 		isLoging = false;
 	}
 
-	Handler mHandler = new Handler() {
-		public void handleMessage(Message msg) {
-			switch (msg.what) {
-			case VALIDATE_USER_CODE:
-				validateUser();
-				break;
-			case SoapService.SERVICE_ERRO:
-				netEorror();
-				break;
-			default:
-				break;
-			}
-		};
-	};
-
-	private void validateUser() {
-		String userId = (String) XmlPaser.paserSingleTag(
-				mSoapService.getReuslt(), "string");
-		Log.i(Tag, "wang" + mSoapService.getReuslt() + "userID: " + userId);
+	private void validateUser(String content) {
+		String userId = (String) XmlPaser.paserSingleTag(content, "string");
 		if (StringTool.isNumber(userId)) {
 			mUserBean.setUserId(userId);
 			saveUserBean(isRemberPass.isChecked());
 			startActivity(new Intent(this, MainActivity.class));
 
 		} else {
-			Toast.makeText(this, "用户名或密码错误", 3 * 1000).show();
+			Toast.makeText(this, content, Toast.LENGTH_LONG).show();
 			isLoging = false;
 		}
 	}
@@ -133,14 +130,15 @@ public class Login extends Activity {
 	}
 
 	private void netEorror() {
-		Toast.makeText(this, "网络连接错误请检查网络", 5 * 1000).show();
+		Toast.makeText(this, getString(R.string.net_connect_erro), 5 * 1000)
+				.show();
 		isLoging = false;
 	}
 
 	public static final UserBean getUserBean() {
 		if (mUserBean == null) {
-			//throw new RuntimeException("!!mUserBean is null !!");
-			
+			// throw new RuntimeException("!!mUserBean is null !!");
+
 		}
 		return mUserBean;
 	}

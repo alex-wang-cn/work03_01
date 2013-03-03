@@ -3,11 +3,17 @@ package com.municipalengineering.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.simpleframework.xml.Element;
+
 public class TendersBean {
 
+	@Element(name = "Id")
 	private String id = "";
+	@Element(name = "BId")
 	private String bId = "";
+	@Element(name = "BiaoduanName")
 	private String name = "";
+	@Element(name = "area")
 	private String area = "";
 	private String address = "";
 	private String projectManager = "";
